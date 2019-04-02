@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html>
+{% block main %}
+<body id="single">
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main>
+
+                <article class="post post-{{ post.pk }}">
+                    <header class="entry-header">
+                        <h1 class="entry-title">
+                       {{ post.title }}
+                        </h1>
+                        <div class="entry-meta">
+                            <span class="post-category">标签：<a href="#">{{ post.category.name }}</a></span>
+                        </div>
+                        <div class="entry-meta">
+                            <span class="post-date"><time class="entry-date"
+                                            datetime="{{ post.created_time }}">{{ post.created_time }}</time></span>
+                            <span class="post-author"><a href="#">{{ post.author }}</a></span>
+                        </div>
+
+                    </header>
+                     <div class="entry-content clearfix">
+                    {{ post.body }}
+                    </div>
+                    <div style="position:absolute;right:140px">
+                            <span class="comments-link"><span>{{ post.comment_set.count }}</span> comments&</span>
+                            <span class="views-count">588 read</span>
+                        </div>
+                    <HR style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" color=grey SIZE=3>
+                        <ul class="comment-list list-unstyled">
+                </article>
+                <section class="comment-area" id="comment-area" >
+
+                    <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-4">
+      <label for="{{ form.name.id_for_label }}">名字：</label>
+      {{ form.name }}
+      {{ form.name.errors }}
+    </div>
+    <div class="col-md-4">
+      <label for="{{ form.email.id_for_label }}">邮箱：</label>
+      {{ form.email }}
+      {{ form.email.errors }}
+    </div>
+    <div class="col-md-4">
+      <label for="{{ form.url.id_for_label }}">URL：</label>
+      {{ form.url }}
+      {{ form.url.errors }}
+    </div>
+    <div class="col-md-12">
+      <label for="{{ form.text.id_for_label }}">评论：</label>
+      {{ form.text }}
+      {{ form.text.errors }}
+      <button type="submit" class="comment-btn">发表</button>
+    </div>
+  </div>    <!-- row -->
+</form>
+                    <div class="comment-list-panel">
+
+                        <HR style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" color=grey SIZE=3>
+                        <ul class="comment-list list-unstyled">
+  {% for comment in comment_list %}
+                            <li>
+    <time class="submit-date">{{ comment.created_time }}</time>
+    <div class="text">
+        <span class="nickname">{{ comment.name }}:</span>
+      {{ comment.text }}
+    </div>
+    <HR style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" color=grey SIZE=3>
+
+  </li>
+  {% empty %}
+  暂无评论
+  {% endfor %}
+</ul>
+                    </div>
+                </section>
+            {% endblock main %}
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
