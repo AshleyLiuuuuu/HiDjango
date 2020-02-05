@@ -100,7 +100,7 @@ pywinpty==0.5.4
 PyYAML==5.1.1
 pyzmq==17.0.0
 qtconsole==4.3.1
-requests==2.19.1
+requests==2.20.0
 requests-file==1.4.3
 scikit-fuzzy==0.4.1
 scikit-learn==0.20.0
