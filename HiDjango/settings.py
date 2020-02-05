@@ -21,16 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '6ph609_ie9o93qe-n(0rg-(gun)bau%)#x318b7)gheasbubh)'
-
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'HiDjango/static/'),
+)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', 'www.hellomee.cn']
-
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.hellomee.cn']
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+
 # Application definition
 
 INSTALLED_APPS = [

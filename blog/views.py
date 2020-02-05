@@ -9,6 +9,7 @@ def index(request):
 
 def detail(request,pk):
     post = get_object_or_404(Post, pk=pk)
+    post.increase_views()
     form = CommentForm()
     # 获取这篇 post 下的全部评论
     comment_list = post.comment_set.all()

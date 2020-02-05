@@ -16,9 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls import url, include
 from django.contrib import admin
-
+import os
+from django.views.static import serve
+from . import settings
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
-    url(r'', include('comments.urls'))
+    url(r'', include('comments.urls')),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}, name='static'),
+
 ]

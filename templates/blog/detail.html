@@ -10,25 +10,25 @@
 
                 <article class="post post-{{ post.pk }}">
                     <header class="entry-header">
-                        <h1 class="entry-title">
+                        <h1 class="text-muted">
                        {{ post.title }}
                         </h1>
                         <div class="entry-meta">
-                            <span class="post-category">标签：<a href="#">{{ post.category.name }}</a></span>
+                            <span class="post-category text-muted">标签：<a href="#">{{ post.category.name }}</a></span>
                         </div>
                         <div class="entry-meta">
+                            <span class="post-author">作者：<a href="#">{{ post.author }}</a></span>
                             <span class="post-date"><time class="entry-date"
                                             datetime="{{ post.created_time }}">{{ post.created_time }}</time></span>
-                            <span class="post-author"><a href="#">{{ post.author }}</a></span>
                         </div>
 
                     </header>
-                     <div class="entry-content clearfix">
+                     <div class="lead text-muted mb-5">
                     {{ post.body }}
                     </div>
                     <div style="position:absolute;right:140px">
                             <span class="comments-link"><span>{{ post.comment_set.count }}</span> comments&</span>
-                            <span class="views-count">588 read</span>
+                            <span class="views-count">{{post.views}} read</span>
                         </div>
                     <HR style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" color=grey SIZE=3>
                         <ul class="comment-list list-unstyled">
@@ -48,12 +48,7 @@
       {{ form.email }}
       {{ form.email.errors }}
     </div>
-    <div class="col-md-4">
-      <label for="{{ form.url.id_for_label }}">URL：</label>
-      {{ form.url }}
-      {{ form.url.errors }}
-    </div>
-    <div class="col-md-12">
+    <div>
       <label for="{{ form.text.id_for_label }}">评论：</label>
       {{ form.text }}
       {{ form.text.errors }}
@@ -67,11 +62,12 @@
                         <ul class="comment-list list-unstyled">
   {% for comment in comment_list %}
                             <li>
-    <time class="submit-date">{{ comment.created_time }}</time>
-    <div class="text">
-        <span class="nickname">{{ comment.name }}:</span>
-      {{ comment.text }}
+
+    <div>
+        <a  class="lead text-muted">{{ comment.text }}</a>
     </div>
+    <span>{{ comment.name }}.</span>
+   <time class="submit-date">{{ comment.created_time }}</time>
     <HR style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" color=grey SIZE=3>
 
   </li>
