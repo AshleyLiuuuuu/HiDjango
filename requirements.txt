@@ -24,7 +24,7 @@ django-six==1.0.4
 dominate==2.3.1
 entrypoints==0.2.3
 envisage==4.7.0
-eventlet==0.23.0
+eventlet==0.31.0
 falcon==1.4.1
 feedfinder2==0.0.4
 feedparser==5.2.1
