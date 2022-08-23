@@ -66,7 +66,7 @@ mayavi==4.6.2
 mistune==0.8.3
 mongoengine==0.15.0
 mysqlclient==1.4.2.post1
-nbconvert==5.3.1
+nbconvert==6.5.1
 nbformat==4.4.0
 networkx==2.2
 newspaper3k==0.2.8
